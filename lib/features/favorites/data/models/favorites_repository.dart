@@ -5,7 +5,6 @@ import 'package:prueba_tecnica_gse/features/weather/data/models/weather_model.da
 class FavoritesRepository {
   static const _favoritesKey = 'favorite_events';
 
-  // Genera un ID único para cada evento para poder identificarlo
   String _getEventId(Event event) {
     return '${event.datetime}_${event.headline.hashCode}';
   }
@@ -13,9 +12,8 @@ class FavoritesRepository {
   Future<void> saveFavorite(Event event) async {
     final prefs = await SharedPreferences.getInstance();
     final eventId = _getEventId(event);
-    final eventJson = json.encode(event.toJson()); // Necesitarás un método toJson en tu modelo Event
+    final eventJson = json.encode(event.toJson()); 
 
-    // Guardamos el evento individualmente y también su ID en una lista de IDs
     final List<String> favoriteIds = prefs.getStringList(_favoritesKey) ?? [];
     if (!favoriteIds.contains(eventId)) {
       favoriteIds.add(eventId);
@@ -28,7 +26,6 @@ class FavoritesRepository {
     final prefs = await SharedPreferences.getInstance();
     final eventId = _getEventId(event);
 
-    // Removemos el ID de la lista y el objeto del evento
     final List<String> favoriteIds = prefs.getStringList(_favoritesKey) ?? [];
     favoriteIds.remove(eventId);
     await prefs.setStringList(_favoritesKey, favoriteIds);

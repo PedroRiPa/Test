@@ -14,19 +14,30 @@ class EventDetailCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(screenWidth * 0.03), 
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        
+        padding: EdgeInsets.all(screenWidth * 0.04), 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Icon(icon, color: Theme.of(context).primaryColor, size: 22),
-                const SizedBox(width: 10),
-                Expanded( 
+                Icon(
+                  icon,
+                  color: Theme.of(context).primaryColor,
+                  
+                  size: screenWidth * 0.055, 
+                ),
+                SizedBox(width: screenWidth * 0.025), 
+                Expanded(
                   child: Text(
                     title,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -36,10 +47,15 @@ class EventDetailCard extends StatelessWidget {
                 ),
               ],
             ),
-            const Divider(height: 24, thickness: 1),
+            Divider(
+              height: screenHeight * 0.03, 
+              thickness: 1, 
+            ),
             Text(
               content,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.5), 
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                height: 1.5, 
+              ),
             ),
           ],
         ),

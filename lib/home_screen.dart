@@ -4,11 +4,9 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:prueba_tecnica_gse/features/weather/presentation/provider.dart';
 import 'package:prueba_tecnica_gse/features/events/presentation/screens/events_screen.dart';
 import 'package:prueba_tecnica_gse/features/favorites/presentation/screens/favorites_screen.dart';
-
 import 'features/weather/screens/weather_screen.dart';
 
 
-// 1. Se convierte a ConsumerStatefulWidget para poder usar Riverpod y mantener el estado local
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
@@ -33,7 +31,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // 2. Se observa el estado de la conexión a internet
     final connectivity = ref.watch(connectivityProvider);
 
     return Scaffold(
@@ -41,10 +38,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         title: const Text('Weather App'),
         centerTitle: true,
       ),
-      // 3. Se usa un Column para poder poner el banner encima del contenido de la pantalla
       body: Column(
         children: [
-          // 4. Este es el banner que solo aparece si no hay conexión
           if (connectivity.hasValue && connectivity.value == ConnectivityResult.none)
             Container(
               width: double.infinity,
@@ -57,7 +52,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
           
-          // 5. El Expanded asegura que el contenido de la pantalla ocupe el resto del espacio
           Expanded(
             child: Center(
               child: _screens.elementAt(_selectedIndex),

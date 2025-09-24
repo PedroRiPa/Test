@@ -1,11 +1,7 @@
 import 'dart:convert';
 
-
-
 Weather weatherFromJson(String str) => Weather.fromJson(json.decode(str));
 
-// --- NUEVO: MÉTODO toJson() PARA LA CLASE PRINCIPAL ---
-// Este método convierte el objeto Weather completo a JSON
 String weatherToJson(Weather data) => json.encode(data.toJson());
 
 class Weather {
@@ -39,8 +35,6 @@ class Weather {
         events: _extractEvents(json),
       );
 
-  // --- MÉTODO toJson() AÑADIDO ---
-  // Convierte este objeto Weather a un mapa, que luego se puede pasar a JSON.
   Map<String, dynamic> toJson() => {
         "latitude": latitude,
         "longitude": longitude,
@@ -87,7 +81,6 @@ class Event {
         description: json["description"] ?? json["desc"] ?? "Sin descripción.",
       );
 
-  // Tu clase Event ya tenía este método, lo cual es perfecto.
   Map<String, dynamic> toJson() => {
         'datetime': datetime,
         'type': type,
@@ -116,7 +109,6 @@ class CurrentConditions {
         icon: json["icon"] ?? "",
       );
 
-  // --- MÉTODO toJson() AÑADIDO ---
   Map<String, dynamic> toJson() => {
         "temp": temp,
         "feelslike": feelslike,
@@ -151,7 +143,6 @@ class Day {
         icon: json["icon"] ?? "",
       );
 
-  // --- MÉTODO toJson() AÑADIDO ---
   Map<String, dynamic> toJson() => {
         "datetime": datetime,
         "tempmax": tempmax,

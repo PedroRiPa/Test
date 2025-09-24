@@ -26,7 +26,7 @@ class WeatherApiService {
   
   Future<Weather> getWeatherEvents(String location) async {
     final String url =
-        '${ApiConstants.baseUrl}$location/last39days?key=${ApiConstants.apiKey}&include=events&lang=es';
+        '${ApiConstants.baseUrl}$location/last5days?key=${ApiConstants.apiKey}&include=events&lang=es';
 
     try {
       final response = await http.get(Uri.parse(url));

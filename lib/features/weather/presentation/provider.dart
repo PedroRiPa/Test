@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:prueba_tecnica_gse/features/favorites/data/models/favorites_repository.dart';
 import 'package:prueba_tecnica_gse/features/weather/data/models/weather_model.dart';
-import '../../favorites/data/models/favorites_repository';
+
 import '../data/models/weather_api_services.dart';
 import '../data/models/weather_repository.dart';
 

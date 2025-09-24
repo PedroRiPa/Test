@@ -21,7 +21,7 @@ class EventsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Últimos 30 Días'),
+        title: const Text('Últimos 5 Días'),
       ),
       body: CustomScrollView(
         slivers: [
